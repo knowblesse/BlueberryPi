@@ -17,7 +17,7 @@ led.off()
 
 #save file location
 loc = "../refrigerator/"
-thr = 60 # sec
+thr = 40 # sec
 
 mycam = pc.PiCamera()
 mycam.vflip = True
@@ -43,10 +43,12 @@ while True:
 			else: # currently capturing.
 				if datetime.now().timestamp() - starttime > thr: # got the dumb!!!
 					for i in range(10):
-						print("dumb!")
+						print("No Coffee For YOU!!!!!")
 					os.system('python3 sendEmail.py')
+					print("noticifation email is sent!")
 					mycam.stop_recording()
 					print("stop capture")
+					print("wating for reset")
 					isCapturing = False
 					isDumbdetected = True
 		else:# button false
