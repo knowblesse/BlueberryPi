@@ -1,11 +1,11 @@
 from smtplib import SMTP
 
 id = "bluewaves9@gmail.com"
-app_psw = ""
+app_psw = "adgnqtjinwrtitr"
 
 email_to = ["knowblesse@gmail.com"]
-email_subject = "[Mimir] Temp-Humid Sensor Report"
-email_body = ""
+email_subject = "[Coffee] Dumb detected"
+email_body = "Dumb detected!!!"
 email_msg = """\
 From: %s
 To: %s
