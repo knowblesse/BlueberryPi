@@ -29,32 +29,32 @@ isDumbdetected = False
 filename = ""
 while True:
 	if not(isDumbdetected):
-	    if button.value == True: # lever pressed and waiting for the dumb	
-	        if not(isCapturing): # currently not capturing -> start capture
-	            print("start capturing!")
-	            isCapturing = True
-	            # start capturing
-	            starttime = datetime.now().timestamp()
-	            mycam.start_preview()
-	            time.sleep(1)
-	            mycam.stop_preview()
-	            filename = datetime.now().strftime("%m-%d_%H:%M:%S.h264")
-	            mycam.start_recording(loc+filename)
-	        else: # currently capturing.
-	            if datetime.now().timestamp() - starttime > thr: # got the dumb!!!
-	                for i in range(10):
-	                	print("dumb!")
-                	os.system('python3 sendEmail.py')
-	                mycam.stop_recording()
-	                print("stop capture")
-	                isCapturing = False
-	                isDumbdetected = True
-	    else: # button false
-	        if isCapturing: # in case where the lever is moved back to normal
-	            print("stop capturing")
-	            isCapturing = False
-	            mycam.stop_recording()
-	            os.system('rm ' + loc + filename)
-    else: # wait for reset
-    	if button.value == False:
-    		isDumbdetected == False
+		if button.value == True: # lever pressed and waiting for the dumb
+			if not(isCapturing): # currently not capturing -> start capture
+				print("start capturing!")
+				isCapturing = True
+				# start capturing
+				starttime = datetime.now().timestamp()
+				mycam.start_preview()
+				time.sleep(1)
+				mycam.stop_preview()
+				filename = datetime.now().strftime("%m-%d_%H:%M:%S.h264")
+				mycam.start_recording(loc+filename)
+			else: # currently capturing.
+				if datetime.now().timestamp() - starttime > thr: # got the dumb!!!
+					for i in range(10):
+						print("dumb!")
+					os.system('python3 sendEmail.py')
+					mycam.stop_recording()
+					print("stop capture")
+					isCapturing = False
+					isDumbdetected = True
+		else:# button false
+			if isCapturing: # in case where the lever is moved back to normal
+				print("stop capturing")
+				isCapturing = False
+				mycam.stop_recording()
+				os.system('rm ' + loc + filename)
+	else: # wait for reset
+		if button.value == False:
+			isDumbdetected = False
