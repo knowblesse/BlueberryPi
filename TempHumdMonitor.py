@@ -7,15 +7,15 @@ from smtplib import SMTP
 # Constants
 refresh_rate = 10 # measure the temp and humid every this minutes
 email_refractory_hours = 3 # hours
-critical_temp_low = 20
+critical_temp_low = 19
 critical_temp_high = 26
-critical_humd_low = 35
+critical_humd_low = 40
 critical_humd_high = 60
 
 last_mail_sent_time = datetime.today() - timedelta(hours=email_refractory_hours)
 
 # Mailing List
-mlist = ['Ji Hoon <knowblesse@gmail.com>']
+mlist = ['Ji Hoon <knowblesse@gmail.com>', 'Chang Ko <toto10kr@gmail.com>']
 
 # Email structure
 def sendAlertEmail(email_to, temp, humid):
