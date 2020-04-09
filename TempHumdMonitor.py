@@ -1,8 +1,7 @@
 from datetime import datetime, timedelta
 import time
-#import board
-#import busio
-#import adafruit_am2320
+from pi_sht1x import SHT1x
+import RPi.GPIO as GPIO
 from smtplib import SMTP
 
 # Constants
@@ -39,15 +38,14 @@ humidity : %s""" % (",".join(email_to), temp, humid)
             print("error")
 
 # Setup Sensor
-i2c = busio.I2C(board.SCL, board.SDA)
-sensor = adafruit_am2320.AM2320(i2c)
+sensor = SHT1x(18,23, gpio_mode=GPIO.BCM)
 
 # Send Test Mail
-sendAlertEmail(mlist, sensor.temperature, sensor.relative_humidity)
+sendAlertEmail(mlist, sensor.read_temperature(), sensor.read_humidity())
 # Run
 while True:
-        temp = sensor.temperature
-        humd = sensor.relative_humidity
+        temp = sensor.read_temperature()
+        humd = sensor.read_humidity()
         print('{0} Temp : {1}, Humd : {2}'.format(time.ctime(),temp,humd))
         if temp > critical_temp_high or temp < critical_temp_low:
             print("critical temperature!")
