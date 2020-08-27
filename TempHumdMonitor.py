@@ -8,11 +8,11 @@ from smtplib import SMTP
 class Ratsius:
     # Constants
     refresh_rate = 10 # measure the temp and humid every this minutes
-    email_refractory_hours = 6 # hours
-    critical_temp_low = 19
+    email_refractory_hours = 12 # hours
+    critical_temp_low = 18
     critical_temp_high = 26
-    critical_humd_low = 40
-    critical_humd_high = 60
+    critical_humd_low = 35
+    critical_humd_high = 65
 
     last_mail_sent_time = datetime.today() - timedelta(hours=email_refractory_hours)
 
@@ -74,7 +74,7 @@ em = Ratsius()
 sensor = SHT1x(18,23, gpio_mode=GPIO.BCM)
 
 # Send System online email
-em.sendEmail(1, sensor.read_temperature(), sensor.read_humidity())
+#em.sendEmail(1, sensor.read_temperature(), sensor.read_humidity())
 # Run
 while True:
         temp = sensor.read_temperature()
