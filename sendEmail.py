@@ -4,8 +4,8 @@ id = "bluewaves9@gmail.com"
 app_psw = "adgnqtjinwrtitr"
 
 email_to = ["knowblesse@gmail.com"]
-email_subject = "[Coffee] Dumb detected"
-email_body = "Dumb detected!!!"
+email_subject = "[New] Alert!"
+email_body = "New Post!!!"
 email_msg = """\
 From: %s
 To: %s
