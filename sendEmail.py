@@ -1,7 +1,7 @@
 from smtplib import SMTP
 
 id = "bluewaves9@gmail.com"
-app_psw = "adgnqtjinwrtitr"
+app_psw = "" # All app password permissions for Google Account is removed
 
 email_to = ["knowblesse@gmail.com"]
 email_subject = "[New] Alert!"

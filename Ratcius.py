@@ -22,7 +22,7 @@ class Ratsius:
     # Email structure
     def sendEmail(self, message_number, temp, humid):
         id = "blueberry@korea.ac.kr"
-        app_psw = "wqulegiadgpzvvsa"
+        app_psw = ""# All app password permissions for Google Account is removed
         email_msg = [
             # Message 0 : Alert
             """from: Ratsius <blueberry@korea.ac.kr>\nto: %s\nsubject : [Ratsius] Alert
