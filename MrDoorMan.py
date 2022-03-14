@@ -42,7 +42,7 @@ while num_retry < max_retry:
                 bgimage = cv.cvtColor(fr, cv.COLOR_BGR2GRAY)
             else:
                 image = cv.cvtColor(fr, cv.COLOR_BGR2GRAY)
-                if (len(bgimage) != 0 ):
+                if (len(bgimage) != 0 ): # bkg image present. button pressed
                     
                     # Status LED blinking
                     if status_led_state:
@@ -64,6 +64,16 @@ while num_retry < max_retry:
                     if (live_button.is_pressed):
                         cv.imshow('live',image)
                         time.sleep(1)
+                else: # no bkg image. Not captured
+                    # Blinking (Fast) led to indicate that the code is running 
+                    if status_led_state:
+                        status_led.off()
+                    else:
+                        status_led.on()
+                    
+                    status_led_state = not status_led_state
+                    time.sleep(0.1)
+
             rawCapture.truncate(0)
     except:
         num_retry += 1
